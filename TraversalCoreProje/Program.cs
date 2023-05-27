@@ -5,7 +5,9 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concrete;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -32,9 +34,11 @@ builder.Services.AddIdentity<AppUser, AppRole>()
 builder.Services.ContainerDependencies();
 // ******************* Ef Baðýmlýlýðýný kaldýrmak için gerekli 
 
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.CustomerValidator();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
 
 // ******************* Identity Part **********************
