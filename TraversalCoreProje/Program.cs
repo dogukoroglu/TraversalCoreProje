@@ -30,6 +30,10 @@ builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<Context>();
 // ******************* Identity Part **********************
 
+builder.Services.AddHttpClient();
+
+
+
 // ******************* Ef Baðýmlýlýðýný kaldýrmak için gerekli 
 builder.Services.ContainerDependencies();
 // ******************* Ef Baðýmlýlýðýný kaldýrmak için gerekli 
