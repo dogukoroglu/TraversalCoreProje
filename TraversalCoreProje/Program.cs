@@ -12,6 +12,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using TraversalCoreProje.CQRS.Handlers.DestinationHandlers;
+using TraversalCoreProje.CQRS.Results.DestinationResults;
 using TraversalCoreProje.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,10 @@ builder.Services.AddLogging(x =>
 });
 
 builder.Services.AddScoped<GetAllDestinationQueryHandler>();
+builder.Services.AddScoped<GetDestinationByIDQueryHandler>();
+builder.Services.AddScoped<CreateDestinationCommandHandler>();
+builder.Services.AddScoped<RemoveDestinationCommandHandler>();
+builder.Services.AddScoped<UpdateDestinationCommandHandler>();
 
 // ******************* Identity Part **********************
 builder.Services.AddDbContext<Context>();

@@ -8,19 +8,20 @@ namespace TraversalCoreProje.CQRS.Handlers.DestinationHandlers
 	{
 		private readonly Context _context;
 
-		public GetDestinationByIDQueryHandler(Context context)
+        public GetDestinationByIDQueryHandler(Context context)
 		{
 			_context = context;
 		}
 
-		public GetDestinationByIDQueryResult Handle(GetDestinationByIDQuery query)
+        public GetDestinationByIDQueryResult Handle(GetDestinationByIDQuery query)
 		{
 			var values = _context.Destinations.Find(query.id);
 			return new GetDestinationByIDQueryResult
 			{
 				DestinationID = values.DestinationID,
 				City = values.City,
-				DayNight = values.DayNight
+				DayNight = values.DayNight,
+				Price = values.Price
 			};
 		}
 	}
