@@ -11,6 +11,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using TraversalCoreProje.CQRS.Handlers.DestinationHandlers;
 using TraversalCoreProje.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,8 @@ builder.Services.AddLogging(x =>
     x.SetMinimumLevel(LogLevel.Debug);
     x.AddDebug();
 });
+
+builder.Services.AddScoped<GetAllDestinationQueryHandler>();
 
 // ******************* Identity Part **********************
 builder.Services.AddDbContext<Context>();
