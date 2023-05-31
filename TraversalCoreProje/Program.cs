@@ -66,6 +66,12 @@ builder.Services.AddMvc(config =>
 });
 
 builder.Services.AddMvc();
+
+// eðer kullanýcý giriþ yapmadan sayfayý açýyorsa login sayfasýna gönderecek
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Login/SignIn/";
+});
 // ******************* Identity Part **********************
 
 //// ******************* Metin dosyasýna log ekleme *********************
