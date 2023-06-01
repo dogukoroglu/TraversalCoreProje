@@ -11,6 +11,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using TraversalCoreProje.CQRS.Handlers.DestinationHandlers;
@@ -65,7 +66,13 @@ builder.Services.AddMvc(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
+//builder.Services.AddLocalization(opt =>
+//{
+//    opt.ResourcesPath = "Resources";
+//});
+
 builder.Services.AddMvc();
+	//.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
 // eðer kullanýcý giriþ yapmadan sayfayý açýyorsa login sayfasýna gönderecek
 builder.Services.ConfigureApplicationCookie(options =>
@@ -104,6 +111,11 @@ app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
+
+//var suppertedCultures = new[] { "en", "fr", "es", "gr", "tr", "de" };
+//var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(suppertedCultures[4])
+//    .AddSupportedCultures(suppertedCultures).AddSupportedUICultures(suppertedCultures);
+//app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "default",
